@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/hamburgers.css">
+  <link rel="shortcut icon" href="./img/ios.svg">
+  <title>Calculator</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="extra-cover"></div>
+    <div class="calculator">
+      <div class="output">
+         <!-- 菜单按钮 -->
+        <button class="hamburger hamburger--collapse hamburger-box" type="button">
+          <span class="hamburger-inner"></span>
+        </button>
+        <!-- 长度遮罩 -->
+        <div id="len-grid-cover" style="display: none;">
+          <div class="len-grid1"></div>
+          <div class="len-grid2"></div>
+          <div class="len-grid3"></div>
+        </div>
+        <!-- 数字显示上 -->
+        <pre id="upper"></pre>
+        <!--  长度转换 -->
+        <div class="len-cover" style="max-width: 40%; display: none;">
+          <select name="" id="len-former" onclick="lenfun()">
+            <option value="nm">纳米</option>
+            <option value="um">微米</option>
+            <option value="mm">毫米</option>
+            <option value="cm" selected>厘米</option>
+            <option value="m">米</option>
+            <option value="km">公里</option>
+          </select>
+        </div>
+        <!-- 重量转换 -->
+        <div class="wei-cover" style="max-width: 40%; display: none;">
+          <select name="" id="wei-former" onclick="weifun()">
+            <option value="ng">纳克</option>
+            <option value="ug">毫克</option>
+            <option value="g" selected>克</option>
+            <option value="kg">千克</option>
+            <option value="t">吨</option>
+            <option value="ml">微升</option>
+            <option value="ul">毫升</option>
+            <option value="L">升</option>
+          </select>
+        </div>
+        <!-- 温度转换 -->
+        <div class="temp-cover" style="max-width: 40%; display: none;">
+          <select name="" id="temp-former" onclick="tempfun()">
+            <option value="C">摄氏度</option>
+            <option value="F">华氏度</option>
+            <option value="K">开尔文</option>
+          </select>
+        </div>
+        <!-- 时间转换 -->
+        <div class="time-cover" style="max-width: 40%; display: none;">
+          <select name="" id="time-former" onclick="timefun()">
+            <option value="us">微秒</option>
+            <option value="ms">毫秒</option>
+            <option value="s" selected>秒</option>
+            <option value="min">分钟</option>
+            <option value="h">小时</option>
+            <option value="day">天</option>
+            <option value="week">周</option>
+            <option value="year">年</option>
+          </select>
+        </div>
+        <!-- 数字显示下 -->
+        <pre id="lower">0</pre>
+        <!--  长度转换 -->
+        <div class="len-cover" style="max-width: 40%; display: none;">
+          <select name="" id="len-later" onclick="lenfun()">
+            <option value="nm">纳米</option>
+            <option value="um">微米</option>
+            <option value="mm">毫米</option>
+            <option value="cm">厘米</option>
+            <option value="m" selected>米</option>
+            <option value="km">公里</option>
+          </select>
+        </div>
+        <!-- 重量转换 -->
+        <div class="wei-cover" style="max-width: 40%; display: none;">
+          <select name="" id="wei-later" onclick="weifun()">
+            <option value="ng">纳克</option>
+            <option value="ug">毫克</option>
+            <option value="g">克</option>
+            <option value="kg" selected>千克</option>
+            <option value="t">吨</option>
+            <option value="ml">微升</option>
+            <option value="ul">毫升</option>
+            <option value="L">升</option>
+          </select>
+        </div>
+        <!-- 温度转换 -->
+        <div class="temp-cover" style="max-width: 40%; display: none;">
+          <select name="" id="temp-later" onclick="tempfun()">
+            <option value="C">摄氏度</option>
+            <option value="F" selected>华氏度</option>
+            <option value="K">开尔文</option>
+          </select>
+        </div>
+        <!-- 时间转换 -->
+        <div class="time-cover" style="max-width: 40%; display: none;">
+          <select name="" id="time-later" onclick="timefun()">
+            <option value="us">微秒</option>
+            <option value="ms">毫秒</option>
+            <option value="s">秒</option>
+            <option value="min" selected>分钟</option>
+            <option value="h">小时</option>
+            <option value="day">天</option>
+            <option value="week">周</option>
+            <option value="year">年</option>
+          </select>
+        </div>
+      </div>
+      <div class="input">
+        <button onclick="pressAllClear()">AC</button>
+        <button onclick="pressBracket(this)">(</button>
+        <button onclick="pressBracket(this)">)</button>
+        <button onclick="pressOperator(this)">+</button>
+        <button onclick="pressNum(this)">7</button>
+        <button onclick="pressNum(this)">8</button>
+        <button onclick="pressNum(this)">9</button>
+        <button onclick="pressOperator(this)">-</button>
+        <button onclick="pressNum(this)">4</button>
+        <button onclick="pressNum(this)">5</button>
+        <button onclick="pressNum(this)">6</button>
+        <button onclick="pressOperator(this)">&times;</button>
+        <button onclick="pressNum(this)">1</button>
+        <button onclick="pressNum(this)">2</button>
+        <button onclick="pressNum(this)">3</button>
+        <button onclick="pressOperator(this)">&div;</button>
+        <button onclick="pressNum(this)">0</button>
+        <button onclick="pressDot()">.</button>
+        <button onclick="pressClear()">
+          <img src="./img/backspace.svg" alt="backspace">
+        </button>
+        <button id="equal" onclick="pressEqual()">=</button>
+        <nav id="nav">
+          <ul>
+            <img src="./img/normal.svg" title="计算器">
+            <li onclick="normal()">标准计算</li>
+            <img src="./img/bmi.svg" title="BMI">
+            <li onclick="bmicalc()">BMI计算</li>
+            <img src="./img/len.svg" title="长度">
+            <li onclick="lenchange()">长度转换</li>
+            <img src="./img/weight.svg" title="重量">
+            <li onclick="weichange()">重量转换</li>
+            <img src="./img/temp.svg" title="温度">
+            <li onclick="tempchange()">温度转换</li>
+            <img src="./img/time.svg" title="时间">
+            <li onclick="timechange()">时间转换</li>
+          </ul>
+        </nav>
+        <div id="bmi-cover" style="display: none;">
+          <p class="bmi-word">请输入身高(m)+体重(kg)：</p>
+          <div class="bmi-grid"></div>
+          <div class="bmi-grid"></div>
+          <div class="bmi-grid"></div>
+          <div class="bmi-grid"></div>
+          <div class="bmi-grid"></div>
+          <div class="bmi-grid"></div>
+          <div class="bmi-grid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="./js/math.js"></script>
+  <script type="text/javascript" src="./js/index.js"></script>
+  <script type="text/javascript" src="./js/length.min.js"></script>
+  
+</body>
+</html>

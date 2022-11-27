@@ -1,0 +1,369 @@
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: #fff;
+}
+.calculator {
+  background: rgba(223,228,231,.8);
+  border-radius: 4px;
+  padding: 15px;
+  margin-right: 200px;
+  width: 500px;
+  min-width: 300px;
+  box-shadow: inset 2px 2px 5px rgba(255, 255, 255, 0.4),
+                    4px 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.output {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+  background: #ffffff;
+  height: 80px;
+  padding: 5px;
+  margin: 0 1px 10px;
+  border-radius: 0.25rem;
+  box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+.output pre {
+  margin: 0;
+  text-align: right;
+  font-size: 35px;
+  font-family: 'Orbitron', sans-serif;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.output pre::-webkit-scrollbar {
+  display: none;
+}
+.output #upper {
+  display: block;
+  text-align: right;
+  color: #424242;
+  font-size: 28px;
+}
+.extra-cover {
+  height: 600px;
+  width: 280px;
+  position: relative;
+  top: 100px;
+  left: -10px;
+  z-index: 13;
+  background-color: #fff;
+}
+/* 长度遮罩 */
+#len-grid-cover {
+  position: relative;
+}
+.len-grid1 {
+  width: 125px;
+  height: 100px;
+  background-color: #ccc;
+  position: absolute;
+  top: 195px;
+  right: 369px;
+  opacity: 0.8;
+  z-index: 11;
+}
+.len-grid2 {
+  width: 125px;
+  height: 100px;
+  background-color: #ccc;
+  position: absolute;
+  top: 195px;
+  right: -6px;
+  opacity: 0.8;
+  z-index: 11;
+}
+.len-grid3 {
+  width: 125px;
+  height: 100px;
+  background-color: #ccc;
+  position: absolute;
+  top: 595px;
+  right: -6px;
+  opacity: 0.8;
+  z-index: 11;
+}
+/* 菜单按钮 */
+button.hamburger.hamburger--collapse {
+  text-align: left;
+  position: absolute;
+  left: 0px;
+}
+/* 菜单图标 */
+img {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 14px;
+  left: 36px;
+}
+img:nth-child(1) {
+  top: 14px;
+}
+img:nth-child(3) {
+  top: 66px;
+}
+img:nth-child(5) {
+  top: 124px;
+}
+img:nth-child(7) {
+  top: 176px;
+}
+img:nth-child(9) {
+  top: 234px;
+}
+img:nth-child(11) {
+  top: 288px;
+}
+/* 计算器按钮 */
+button {
+  width: 100%;
+  height: 66px;
+  font-size: 24px;
+  font-weight: 900;
+  font-family: none;
+  position: relative;
+  border-radius: 0;
+  border-color: rgba(223,228,231,.8);
+}
+/* backspace */
+button img {
+  width: 55px;
+  height: 55px;
+  text-align: center;
+  margin-top: 7px;
+}
+button:after {
+  border: none;
+}
+
+select {
+  list-style: none;
+}
+.input {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.input button {
+  width: calc(25%);
+  height: 100px;
+  background-color: rgba(223,228,231,.8);
+  box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+                    1px 1px 3px white;
+  color: black;
+  font-size: 34px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  opacity: .8;
+}
+button:nth-child(4n) {
+  background-color: #e96d14;
+}
+.input button:hover {
+  background-color: white;
+}
+.input button:active {
+  box-shadow: inset 1px 1px 5px rgba(196, 182, 182, 0.7),
+              inset -1px -1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* 长度选择器 */
+.len-cover {
+  position: relative;
+}
+#len-former {
+  height: 30px;
+  width: 100px;
+  font-size: 22px;
+  margin-bottom: 9px;
+  border: 2px solid #123151;
+  position: relative;
+  border-radius: 5px;
+  top: 8px;
+  right: 5px;
+}
+#len-later {
+  height: 30px;
+  width: 100px;
+  font-size: 22px;
+  border: 2px solid #123151;
+  position: relative;
+  border-radius: 5px;
+  top: 4px;
+  right: 5px;
+}
+/* 重量选择器 */
+.wei-cover {
+  position: relative;
+}
+#wei-former {
+  height: 30px;
+  width: 100px;
+  font-size: 22px;
+  border: 2px solid #123151;
+  position: relative;
+  border-radius: 5px;
+  margin-bottom: 9px;
+  top: 8px;
+  right: 5px;
+}
+#wei-later {
+  height: 30px;
+  width: 100px;
+  font-size: 22px;
+  border: 2px solid #123151;
+  position: relative;
+  border-radius: 5px;
+  top: 4px;
+  right: 5px;
+}
+/* 温度选择器 */
+.temp-cover {
+  position: relative;
+}
+#temp-former {
+  height: 30px;
+  width: 100px;
+  font-size: 22px;
+  margin-bottom: 9px;
+  border: 2px solid #123151;
+  position: relative;
+  border-radius: 5px;
+  top: 8px;
+  right: 5px;
+}
+#temp-later {
+  height: 30px;
+  width: 100px;
+  font-size: 22px;
+  border: 2px solid #123151;
+  position: relative;
+  border-radius: 5px;
+  top: 4px;
+  right: 5px;
+}
+/* 时间选择器 */
+.time-cover {
+  position: relative;
+}
+#time-former {
+  height: 30px;
+  width: 100px;
+  font-size: 22px;
+  margin-bottom: 9px;
+  border: 2px solid #123151;
+  position: relative;
+  border-radius: 5px;
+  top: 8px;
+  right: 5px;
+}
+#time-later {
+  height: 30px;
+  width: 100px;
+  font-size: 22px;
+  border: 2px solid #123151;
+  position: relative;
+  border-radius: 5px;
+  top: 4px;
+  right: 5px;
+}
+
+/* 导航栏 */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#nav {
+  position: absolute;
+  width: 200px;
+  left: -300px;
+  height: 500px;
+  background-color: #e96d14;
+  z-index: 12;
+  transition: left linear .1s;
+}
+#nav li {
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 16px 5px;
+  padding-left: 40px;
+  border-bottom: 1px dashed black;
+}
+#nav li:last-child {
+  border: none;
+}
+/* bmi遮罩 */
+#bmi-cover {
+  position: relative;
+}
+.bmi-word {
+  width: 400px;
+  position: absolute;
+  top: -510px;
+  right: 40px;
+  font-size: 22px;
+}
+.bmi-grid {
+  width: 125px;
+  height: 100px;
+  background-color: #ccc;
+  position: absolute;
+  top: -400px;
+  right: 0px;
+  opacity: 0.8;
+}
+.bmi-grid:nth-child(2) {
+  right: 375px;
+  display: none;
+}
+.bmi-grid:nth-child(3) {
+  right: 250px;
+}
+.bmi-grid:nth-child(4) {
+  right: 125px;
+}
+.bmi-grid:nth-child(5) {
+  right: 0;
+  display: none;
+}
+.bmi-grid:nth-child(6) {
+  top: -300px;
+  right: 0;
+}
+.bmi-grid:nth-child(7) {
+  top: -200px;
+  right: 0;
+}
+.bmi-grid:nth-child(8) {
+  top: -100px;
+  right: 0;
+}
+#nav li:hover {
+  background-color: rgba(241, 234, 234, 0.9);
+}
